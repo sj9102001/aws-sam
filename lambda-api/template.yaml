@@ -1,0 +1,18 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Transform: "AWS::Serverless-2016-10-31"
+Description: Lambda with API as event
+Resources:
+  helloworldlambda:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: hello_world.lambda_handler
+      CodeUri: ./
+      Runtime: python3.6
+      FunctionName: hello_world
+      Description: A starter AWS Lambda function.
+      Events:
+        ApiEvent:
+          Type: Api
+          Properties:
+            Method: get
+            Path: /helloworld
